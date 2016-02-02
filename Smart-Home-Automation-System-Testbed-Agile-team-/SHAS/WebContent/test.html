@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Dialog - Modal confirmation</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+  <script>
+  $(function() {
+	  $("#message").text("");
+	  $("#messagespan").removeClass("ui-icon ui-icon-alert");
+	  $("#hh").click(function(){
+		  $("#message").text("These items will be permanently deleted and cannot be recovered. Are you sure?");
+		  $("#messagespan").addClass("ui-icon ui-icon-alert");
+    $("#dialog-confirm").dialog({
+      resizable: false,
+      height:140,
+      modal: true,
+      buttons: {
+        "Delete all items": function() {
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+	  });
+  });
+  </script>
+</head>
+<body>
+ <input type="button" id="hh" value="hh"/>
+<div id="dialog-confirm" title="Empty the recycle bin?">
+  <p id="message" ><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span></p>
+</div>
+ 	
+</body>
+</html>
